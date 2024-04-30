@@ -6,7 +6,7 @@ pygame.init()
 
 largura = 640 # eixo x
 altura = 480 # eixo y
-x = largura / 2
+x = largura / 2 - 20
 y = altura / 2
 
 tela = pygame.display.set_mode((largura, altura))
@@ -22,15 +22,28 @@ while True:
             pygame.quit()
             exit()
         
+        # if event.type == KEYDOWN:
+        #     if event.key == K_a:
+        #         x = x - 20
+        #     if event.key == K_d:
+        #         x = x + 20
+        #     if event.key == K_w:
+        #         y = y - 20
+        #     if event.key == K_s:
+        #         y = y + 20
         if event.type == KEYDOWN:
-            if event.key == K_a:
-                x = x - 20
-            if event.key == K_d:
-                x = x + 20
-            if event.key == K_w:
-                y = y - 20
-            if event.key == K_s:
-                y = y + 20
+            if event.key == K_SPACE:
+                x = largura / 2 - 20
+                y = altura / 2
+
+    if pygame.key.get_pressed()[K_a]:
+        x = x - 20
+    if pygame.key.get_pressed()[K_d]:
+        x = x + 20
+    if pygame.key.get_pressed()[K_w]:
+        y = y - 20
+    if pygame.key.get_pressed()[K_s]:
+        y = y + 20
 
     pygame.draw.rect(tela, (150, 10, 200), (x, y, 40, 60))
 
